@@ -1,11 +1,10 @@
 import "./register.css";
 
-export default function Register() {
-  return (
+export const Register = () =>  (
     <div className="login">
       <div className="loginWrapper">
         <div className="loginLeft">
-          <h3 className="loginLogo">Lamasocial</h3>
+          <h3 className="loginLogo">Afeezdev Social</h3>
           <span className="loginDesc">
             Connect with friends and the world around you on Lamasocial.
           </span>
@@ -25,4 +24,4 @@ export default function Register() {
       </div>
     </div>
   );
-}
+

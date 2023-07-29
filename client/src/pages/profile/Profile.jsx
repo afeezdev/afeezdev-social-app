@@ -4,8 +4,8 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import Feed from "../../components/feed/Feed";
 import Rightbar from "../../components/rightbar/Rightbar";
 
-export default function Profile() {
-  return (
+export  const Profile = () => 
+   (
     <>
       <Topbar />
       <div className="profile">
@@ -37,4 +37,4 @@ export default function Profile() {
       </div>
     </>
   );
-}
+
