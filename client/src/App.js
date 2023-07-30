@@ -12,9 +12,9 @@ class App extends Component {
       <div>
           <Routes>
             <Route  path="/" element={ <Home/>} />
-            <Route path="/login" element={ <Login/>} />
-            <Route path="/profile/:username" element={ <Profile/>} />
-            <Route path="/register" element={ <Register/>} />
+            <Route path="login" element={ <Login/>} />
+            <Route  path="profile/:username" element={ <Profile/>} />
+            <Route path="register" element={ <Register/>} />
           </Routes>
       </div>
     );

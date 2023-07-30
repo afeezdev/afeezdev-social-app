@@ -43,6 +43,11 @@ GET http://localhost:8800/api/posts/619d1d4fb205d80e4032a840
 
 GET http://localhost:8800/api/posts/timeline/619d16d886392121187baf91
 
+####
+
+GET http://localhost:8800/api/posts/profile/afeez1
+
+
 
 
 # 619d16d886392121187baf91
