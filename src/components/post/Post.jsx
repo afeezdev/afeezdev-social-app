@@ -2,8 +2,13 @@ import "./post.css";
 import { MoreVert } from "@material-ui/icons";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { format } from "timeago.js";
 import { Link } from "react-router-dom"
+import TimeAgo from 'react-timeago'
+import frenchStrings from 'react-timeago/lib/language-strings/fr'
+import buildFormatter from 'react-timeago/lib/formatters/buildFormatter'
+
+const formatter = buildFormatter(frenchStrings)
+
 
 export default function Post({ post }) {
   const [like, setLike] = useState(post.likes.length)
@@ -11,17 +16,13 @@ export default function Post({ post }) {
   const [user, setUser] = useState({})
   const PF = process.env.REACT_APP_PUBLIC_FOLDER
 
-
-  console.log(post.userId)
   useEffect(() => {
     const fetchUser= async () => {
       const res = await axios.get(`/users/${post.userId}`)
-      // setUser(res.data)
-      console.log(res.data)
+      setUser(res.data)
     }
     fetchUser()
   }, [post.userId])
-
 
   const likeHandler =()=>{
     setLike(isLiked ? like-1 : like+1)
@@ -39,11 +40,12 @@ export default function Post({ post }) {
                 alt=""
               />
             </Link>
-            
             <span className="postUsername">
               {user.username}
             </span>
-            <span className="postDate" >{format(post.createdAt)}</span>
+            <span className="postDate" >
+            <TimeAgo date={post.createdAt} formatter= {formatter} />
+            </span>
           </div>
           <div className="postTopRight">
             <MoreVert />
@@ -55,8 +57,8 @@ export default function Post({ post }) {
         </div>
         <div className="postBottom">
           <div className="postBottomLeft">
-            <img className="likeIcon" src="assets/like.png" onClick={likeHandler} alt="" />
-            <img className="likeIcon" src="assets/heart.png" onClick={likeHandler} alt="" />
+            <img className="likeIcon" src={`${PF}like.png`} onClick={likeHandler} alt="" />
+            <img className="likeIcon" src={`${PF}heart.png`} onClick={likeHandler} alt="" />
             <span className="postLikeCounter">{like} people like it</span>
           </div>
           <div className="postBottomRight">
