@@ -3,11 +3,7 @@ import { MoreVert } from "@material-ui/icons";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom"
-import TimeAgo from 'react-timeago'
-import frenchStrings from 'react-timeago/lib/language-strings/fr'
-import buildFormatter from 'react-timeago/lib/formatters/buildFormatter'
-
-const formatter = buildFormatter(frenchStrings)
+import * as moment from "moment"
 
 
 export default function Post({ post }) {
@@ -18,7 +14,7 @@ export default function Post({ post }) {
 
   useEffect(() => {
     const fetchUser= async () => {
-      const res = await axios.get(`/users/${post.userId}`)
+      const res = await axios.get(`/users?userId=${post.userId}`)
       setUser(res.data)
     }
     fetchUser()
@@ -44,7 +40,7 @@ export default function Post({ post }) {
               {user.username}
             </span>
             <span className="postDate" >
-            <TimeAgo date={post.createdAt} formatter= {formatter} />
+            {moment(post.createdAt).format("YYYY/MM/DD")}
             </span>
           </div>
           <div className="postTopRight">

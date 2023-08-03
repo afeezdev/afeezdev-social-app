@@ -4,7 +4,7 @@ import Share from "../share/Share";
 import "./feed.css";
 import axios from 'axios'
 
-export default function Feed({username, ok}) {
+export default function Feed({username}) {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
@@ -15,14 +15,7 @@ export default function Feed({username, ok}) {
       setPosts(res.data)
     }
     fetchPosts()
-  }, [])
-  // useEffect(() => {
-  //   const fetchPosts = async () => {
-  //     const res = await axios.get("/posts/timeline/619d16d886392121187baf91")
-  //     setPosts(res.data)      
-  //   }
-  //   fetchPosts()
-  // }, [])
+  }, [username])
 
   return (
     <div className="feed">
