@@ -83,11 +83,11 @@ export default function Rightbar({ user }) {
           </div>
           <div className="rightbarInfoItem">
             <span className="rightbarInfoKey">From:</span>
-            <span className="rightbarInfoValue">{user.from}</span>
+            <span className="rightbarInfoValue"  key={user.id}>{user.from}</span>
           </div>
           <div className="rightbarInfoItem">
             <span className="rightbarInfoKey">Relationship:</span>
-            <span className="rightbarInfoValue">
+            <span className="rightbarInfoValue" key={user.id}>
               {user.relationship === 1
                 ? "Single"
                 : user.relationship === 1
@@ -97,13 +97,14 @@ export default function Rightbar({ user }) {
           </div>
         </div>
         <h4 className="rightbarTitle">User friends</h4>
-        <div className="rightbarFollowings">
+        <div className="rightbarFollowings" >
           {friends.map((friend) => (
             <Link
               to={"/profile/" + friend.username}
               style={{ textDecoration: "none" }}
+              key={friend.id}
             >
-              <div className="rightbarFollowing">
+              <div className="rightbarFollowing" >
                 <img
                   src={
                     friend.profilePicture
