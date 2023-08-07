@@ -1,12 +1,20 @@
 import "./topbar.css";
 import { Search, Person, Chat, Notifications } from "@material-ui/icons";
-import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { Link} from "react-router-dom";
+import { useContext} from "react";
 import { AuthContext } from "../../context/AuthContext";
 
+
 export default function Topbar() {
-  const { user } = useContext(AuthContext);
-  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+const { user } = useContext(AuthContext);
+const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+
+  const signOut = async (e) => {
+     e.preventDefault();
+     localStorage.clear()
+     window.location.reload()
+  };
+
   return (
     <div className="topbarContainer">
       <div className="topbarLeft">
@@ -53,6 +61,9 @@ export default function Topbar() {
             className="topbarImg"
           />
         </Link>
+        <div onClick={signOut} style={{ color: "white", cursor: "pointer"}}>
+          Sign Out
+        </div>
       </div>
     </div>
   );
