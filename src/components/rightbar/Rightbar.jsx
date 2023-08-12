@@ -56,7 +56,7 @@ export default function Rightbar({ user }) {
         </span>
       </div>
       <img className="rightbarAd" src="assets/ad.png" alt="" />
-      <h4 className="rightbarTitle">Online Friends</h4>
+      <h4 className="rightbarTitle">Suggested Friends</h4>
       <ul className="rightbarFriendList">
         {Users.map((u) => (
           <Online key={u.id} user={u} />
@@ -75,6 +75,7 @@ export default function Rightbar({ user }) {
             {followed ? <Remove /> : <Add />}
           </button>
         )}
+        
         <h4 className="rightbarTitle">User information</h4>
         <div className="rightbarInfo">
           <div className="rightbarInfoItem">

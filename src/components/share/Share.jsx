@@ -28,7 +28,7 @@ export default function Share() {
       data.append("name", fileName);
       data.append("file", file);
       newPost.img = fileName;
-      console.log(newPost);
+      console.log(newPost.profilePicture);
       try {
         await axios.post("/upload", data);
       } catch (err) {}
@@ -59,12 +59,7 @@ export default function Share() {
           />
         </div>
         <hr className="shareHr" />
-        {file && (
-          <div className="shareImgContainer">
-            <img className="shareImg" src={URL.createObjectURL(file)} alt="" />
-            <Cancel className="shareCancelImg" onClick={() => setFile(null)} />
-          </div>
-        )}
+        
         <form className="shareBottom" onSubmit={submitHandler}>
           <div className="shareOptions">
             <label htmlFor="file" className="shareOption">
@@ -91,6 +86,13 @@ export default function Share() {
               <span className="shareOptionText">Feelings</span>
             </div>
           </div>
+          <hr className="shareHr" />
+        {file && (
+          <div className="shareImgContainer">
+            <img className="shareImg" src={URL.createObjectURL(file)} alt="" />
+            <Cancel className="shareCancelImg" onClick={() => setFile(null)} />
+          </div>
+        )}
           <button className="shareButton" type="submit">
             Share
           </button>
