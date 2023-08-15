@@ -11,13 +11,15 @@ export default function Rightbar({ user }) {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER
   const [friends, setFriends] = useState([]);
   const { user: currentUser, dispatch } = useContext(AuthContext);
-  const [followed, setFollowed] = useState(
-    currentUser.followings.includes(user?.id)
-  );
+  const [followed, setFollowed] = useState(false );
 
+  
   useEffect(() => {
     const getFriends = async () => {
       try {
+        if(user) {
+          setFollowed(currentUser.followings.includes(user._id))
+      }else { setFollowed(false)}
         const friendList = await axios.get("/users/friends/" + user._id);
         setFriends(friendList.data);
       } catch (err) {
@@ -26,6 +28,9 @@ export default function Rightbar({ user }) {
     };
     getFriends();
   }, [user]);
+
+  
+  console.log(followed)
 
   const handleClick = async () => {
     try {
@@ -67,6 +72,8 @@ export default function Rightbar({ user }) {
   };
 
   const ProfileRightbar = () => {
+ 
+    
     return (
       <>
         {user.username !== currentUser.username && (
@@ -88,7 +95,7 @@ export default function Rightbar({ user }) {
           </div>
           <div className="rightbarInfoItem">
             <span className="rightbarInfoKey">Relationship:</span>
-            <span className="rightbarInfoValue" key={user.id}>
+            <span className="rightbarInfoValue" >
               {user.relationship === 1
                 ? "Single"
                 : user.relationship === 1
@@ -103,7 +110,7 @@ export default function Rightbar({ user }) {
             <Link
               to={"/profile/" + friend.username}
               style={{ textDecoration: "none" }}
-              key={friend.id}
+              key={friend._id}
             >
               <div className="rightbarFollowing" >
                 <img

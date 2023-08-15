@@ -57,6 +57,13 @@ export default function Share() {
             className="shareInput"
             ref={desc}
           />
+        <hr className="shareHr" />
+        {file && (
+          <div className="shareImgContainer">
+            <img className="shareImg" src={URL.createObjectURL(file)} alt="" />
+            <Cancel className="shareCancelImg" onClick={() => setFile(null)} />
+          </div>
+        )}
         </div>
         <hr className="shareHr" />
         
@@ -86,13 +93,6 @@ export default function Share() {
               <span className="shareOptionText">Feelings</span>
             </div>
           </div>
-          <hr className="shareHr" />
-        {file && (
-          <div className="shareImgContainer">
-            <img className="shareImg" src={URL.createObjectURL(file)} alt="" />
-            <Cancel className="shareCancelImg" onClick={() => setFile(null)} />
-          </div>
-        )}
           <button className="shareButton" type="submit">
             Share
           </button>
