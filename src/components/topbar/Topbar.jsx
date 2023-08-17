@@ -9,10 +9,11 @@ export default function Topbar() {
 const { user } = useContext(AuthContext);
 const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
-  const signOut = async (e) => {
+  const signOut = (e) => {
      e.preventDefault();
      localStorage.clear()
      window.location.reload()
+     window.location.href = "/login"
   };
 
   return (

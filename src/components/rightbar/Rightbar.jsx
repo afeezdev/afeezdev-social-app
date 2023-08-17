@@ -29,9 +29,6 @@ export default function Rightbar({ user }) {
     getFriends();
   }, [user]);
 
-  
-  console.log(followed)
-
   const handleClick = async () => {
     try {
       if (followed) {
@@ -133,7 +130,7 @@ export default function Rightbar({ user }) {
   return (
     <div className="rightbar">
       <div className="rightbarWrapper">
-        {user ? <ProfileRightbar /> : <HomeRightbar />}
+        {user ? <ProfileRightbar /> : <HomeRightbar friend = {friends} />}
       </div>
     </div>
   );
