@@ -1,4 +1,4 @@
-import "./rightbar.css";
+import "./rightbar.scss";
 import { Users } from "../../dummyData";
 import Online from "../online/Online";
 import { useContext, useEffect, useState } from "react";
@@ -61,7 +61,7 @@ export default function Rightbar({ user }) {
       <h4 className="rightbarTitle">Suggested Friends</h4>
       <ul className="rightbarFriendList">
         {Users.map((u) => (
-          <Online key={u.id} user={u} />
+          <Online key={u.id} user={u}  />
         ))}
       </ul>
     </>

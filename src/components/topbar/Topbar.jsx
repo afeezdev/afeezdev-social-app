@@ -1,4 +1,4 @@
-import "./topbar.css";
+import "./topbar.scss";
 import { Search, Person, Chat, Notifications } from "@material-ui/icons";
 import { Link} from "react-router-dom";
 import { useContext} from "react";
@@ -58,7 +58,7 @@ const PF = process.env.REACT_APP_PUBLIC_FOLDER;
             className="topbarImg"
           />
         </Link>
-        <div onClick={signOut} style={{ color: "white", cursor: "pointer"}}>
+        <div className="signout" onClick={signOut}>
           Sign Out
         </div>
       </div>

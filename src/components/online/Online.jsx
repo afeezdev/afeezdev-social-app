@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import "./online.css";
+import "./online.scss";
 
 export default function Online({user}) {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER
@@ -15,8 +15,8 @@ export default function Online({user}) {
         <img className="rightbarProfileImg" src={PF+user.profilePicture} alt="" />
         <span className="rightbarOnline"></span>
       </div>
-      </Link>
       <span className="rightbarUsername">{user.username}</span>
+      </Link>
     </div>
   );
 }
