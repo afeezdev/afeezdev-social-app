@@ -1,16 +1,22 @@
-import "./profile.css";
+import "./profile.scss";
 import Topbar from "../../components/topbar/Topbar";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Feed from "../../components/feed/Feed";
 import Rightbar from "../../components/rightbar/Rightbar";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { useParams } from "react-router";
+import { AuthContext } from "../../context/AuthContext";
+import { Cancel, Add, PermMedia } from "@material-ui/icons";
+
 
 export default function Profile({ }) {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const [user, setUser] = useState({});
   const username = useParams().username;
+  const [file, setFile] = useState(null);
+  const { user: currentUser, dispatch } = useContext(AuthContext);
+
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -20,6 +26,27 @@ export default function Profile({ }) {
     fetchUser();
   }, [username]);
 
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    const updatedProfile = {
+      userId: user._id,
+    };
+    if (file) {
+      const data = new FormData();
+      const fileName = file.name.replace(file.name, "profilePicture.JPG");
+      data.set("name", fileName);
+      data.set("file", file);
+      updatedProfile.profilePicture = fileName;
+      console.log(updatedProfile);
+      try { 
+        await axios.post("/upload", data);
+      } catch (err) {}
+    }
+    try {
+        await axios.put(`/users/${user._id}`, updatedProfile);
+        window.location.reload();            
+    } catch (err) {}
+  };
   return (
     <>
       <Topbar />
@@ -50,6 +77,34 @@ export default function Profile({ }) {
             <div className="profileInfo">
               <h4 className="profileInfoName">{user.username}</h4>
               <span className="profileInfoDesc">{user.desc}</span>
+              <hr className="shareHr" />
+                {file && (
+                  <div className="shareImgContainer">
+                    <img className="shareImg" src={URL.createObjectURL(file)} alt="" />
+                    <Cancel className="shareCancelImg" onClick={() => setFile(null)} />
+                  </div>
+                )}
+              {user.username == currentUser.username && (    
+                <>
+                 <label htmlFor="file" className="shareOption">
+                      <span className="shareOptionText"> 
+                        <span className="changeProfilePicture">
+                          Change Profile Picture<Add/>
+                        </span>
+                      </span>
+                      <input
+                        style={{ display: "none" }}
+                        type="file"
+                        id="file"
+                        accept=".png,.jpeg,.jpg"
+                        onChange={(e) => setFile(e.target.files[0])}
+                      /> <br />
+                    </label>
+                    <button className="changeProfilePicture" type="submit" onClick={submitHandler}>
+                    Upload
+                  </button>
+                </>            
+              )}              
             </div>
           </div>
           <div className="profileRightBottom">

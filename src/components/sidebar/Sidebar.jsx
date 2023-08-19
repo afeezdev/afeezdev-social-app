@@ -31,7 +31,7 @@ export default function Sidebar() {
       }
     };
     getFriends();
-  }, [myFriends]);
+  }, [currentUser._id]);
 
     return (
     <div className="sidebar">
@@ -76,6 +76,7 @@ export default function Sidebar() {
         </ul>
         <button className="sidebarButton">Show More</button>
         <hr className="sidebarHr" />
+        <span><h2>My Friends</h2></span> <br />
         <ul className="sidebarFriendList">
           {myFriends.map((u) => (
             <CloseFriend key={u._id} user={u} />

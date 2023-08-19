@@ -46,23 +46,25 @@
 .rightbarFriendList {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
 }
 
 .rightbarTitle{
   font-size: 18px;
   font-weight: 500;
   margin-bottom: 10px;
-
- 
 }
 
 .rightbarInfo{
   margin-bottom: 30px;
+  flex: 3.5
 }
 
 .rightbarInfoItem{
   margin-bottom: 10px;
+    @media only screen and (max-width: 900px) {
+    margin-left: 10px;
+  }
+
 }
 
 .rightbarInfoKey{
@@ -93,6 +95,7 @@
   height: 100px;
   object-fit: cover;
   border-radius: 5px;
+  margin: 10px;
 }
 
 .rightbarFollowButton{

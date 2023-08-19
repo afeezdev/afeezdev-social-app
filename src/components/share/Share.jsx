@@ -9,6 +9,7 @@ import {
 import { useContext, useRef, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default function Share() {
   const { user } = useContext(AuthContext);
@@ -29,13 +30,18 @@ export default function Share() {
       data.append("file", file);
       newPost.img = fileName;
       console.log(newPost.profilePicture);
-      try {
+      try { 
         await axios.post("/upload", data);
       } catch (err) {}
     }
     try {
-      await axios.post("/posts", newPost);
-      window.location.reload();
+      if(!newPost.desc && !newPost.img) {
+        alert("Ooops, empty post isn't allowed !!!")
+      }else {
+        await axios.post("/posts", newPost);
+        window.location.reload();
+      }
+      
     } catch (err) {}
   };
 
@@ -43,20 +49,24 @@ export default function Share() {
     <div className="share">
       <div className="shareWrapper">
         <div className="shareTop">
-          <img
-            className="shareProfileImg"
-            src={
-              user.profilePicture
-                ? PF + user.profilePicture
-                : PF + "person/noAvatar.png"
-            }
-            alt=""
-          />
+          <Link to={`/profile/${user.username}`}>
+            <img
+              className="shareProfileImg"
+              src={
+                user.profilePicture
+                  ? PF + user.profilePicture
+                  : PF + "person/noAvatar.png"
+              }
+              alt=""
+            />
+          </Link>
           <input
             placeholder={"What's on your mind " + user.username + "?"}
             className="shareInput"
             ref={desc}
           />
+        
+        </div>
         <hr className="shareHr" />
         {file && (
           <div className="shareImgContainer">
@@ -64,8 +74,6 @@ export default function Share() {
             <Cancel className="shareCancelImg" onClick={() => setFile(null)} />
           </div>
         )}
-        </div>
-        <hr className="shareHr" />
         
         <form className="shareBottom" onSubmit={submitHandler}>
           <div className="shareOptions">

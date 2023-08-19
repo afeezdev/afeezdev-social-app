@@ -47,4 +47,38 @@
 
 .profileRightBottom{
     display: flex;
+
+    @media only screen and (max-width: 900px) {
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: center;
+      }
+    
+}
+
+.shareImgContainer{
+    padding: 0 20px 10px 20px;
+    width: 100px;
+    height: 100px;
+    position: relative;
+  
+  }
+
+.shareImg{
+    width: 100%;
+    object-fit: cover;
+}
+
+.changeProfilePicture{
+    margin-top: 5px;
+    border: none;
+    background-color: #1872f2;
+    color: white;
+    border-radius: 5px;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
 }
