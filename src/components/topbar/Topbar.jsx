@@ -3,18 +3,11 @@ import { Search, Person, Chat, Notifications } from "@material-ui/icons";
 import { Link} from "react-router-dom";
 import { useContext} from "react";
 import { AuthContext } from "../../context/AuthContext";
-
+import { signOut } from "../../signOut";
 
 export default function Topbar() {
 const { user } = useContext(AuthContext);
 const PF = process.env.REACT_APP_PUBLIC_FOLDER;
-
-  const signOut = (e) => {
-     e.preventDefault();
-     localStorage.clear()
-     window.location.reload()
-     window.location.href = "/login"
-  };
 
   return (
     <div className="topbarContainer">

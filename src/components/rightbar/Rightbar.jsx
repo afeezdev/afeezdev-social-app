@@ -27,7 +27,7 @@ export default function Rightbar({ user }) {
       }
     };
     getFriends();
-  }, [user]);
+  }, [user, currentUser]);
 
   const handleClick = async () => {
     try {
@@ -95,9 +95,9 @@ export default function Rightbar({ user }) {
             <span className="rightbarInfoValue" >
               {user.relationship === 1
                 ? "Single"
-                : user.relationship === 1
+                : user.relationship === 2
                 ? "Married"
-                : "-"}
+                : "Divorced"}
             </span>
           </div>
         </div>

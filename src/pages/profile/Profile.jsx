@@ -26,7 +26,7 @@ export default function Profile({ }) {
     fetchUser();
   }, [username]);
 
-  const submitHandler = async (e) => {
+  const uploadHandler = async (e) => {
     e.preventDefault();
     const updatedProfile = {
       userId: user._id,
@@ -77,17 +77,17 @@ export default function Profile({ }) {
             <div className="profileInfo">
               <h4 className="profileInfoName">{user.username}</h4>
               <span className="profileInfoDesc">{user.desc}</span>
-              <hr className="shareHr" />
+              <hr className="profileHr" />
                 {file && (
-                  <div className="shareImgContainer">
-                    <img className="shareImg" src={URL.createObjectURL(file)} alt="" />
-                    <Cancel className="shareCancelImg" onClick={() => setFile(null)} />
+                  <div className="profileImgContainer">
+                    <img className="profileImg" src={URL.createObjectURL(file)} alt="" />
+                    <Cancel className="profileCancelImg" onClick={() => setFile(null)} />
                   </div>
                 )}
               {user.username == currentUser.username && (    
                 <>
-                 <label htmlFor="file" className="shareOption">
-                      <span className="shareOptionText"> 
+                 <label htmlFor="profilefile" className="profileOption">
+                      <span className="profileOptionText"> 
                         <span className="changeProfilePicture">
                           Change Profile Picture<Add/>
                         </span>
@@ -95,12 +95,12 @@ export default function Profile({ }) {
                       <input
                         style={{ display: "none" }}
                         type="file"
-                        id="file"
+                        id="profilefile"
                         accept=".png,.jpeg,.jpg"
                         onChange={(e) => setFile(e.target.files[0])}
                       /> <br />
                     </label>
-                    <button className="changeProfilePicture" type="submit" onClick={submitHandler}>
+                    <button className="changeProfilePicture" type="submit" onClick={uploadHandler}>
                     Upload
                   </button>
                 </>            

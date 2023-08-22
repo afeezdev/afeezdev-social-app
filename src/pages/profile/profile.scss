@@ -56,7 +56,7 @@
     
 }
 
-.shareImgContainer{
+.profileImgContainer{
     padding: 0 20px 10px 20px;
     width: 100px;
     height: 100px;
@@ -64,7 +64,7 @@
   
   }
 
-.shareImg{
+.profileImg{
     width: 100%;
     object-fit: cover;
 }
@@ -82,3 +82,10 @@
     font-weight: 500;
     cursor: pointer;
 }
+
+.profileCancelImg{
+    position: absolute;
+    top: 0;
+    right: 20px;
+    color: white;
+  }

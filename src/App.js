@@ -3,6 +3,7 @@ import { Home } from "./pages/home/Home";
 import Login  from "./pages/login/Login";
 import Profile from "./pages/profile/Profile";
 import Register from "./pages/register/Register";
+import UpdateProfile from "./pages/updateProfile/updateProfile";
 
 import { Route, Routes, Navigate } from 'react-router-dom';
 
@@ -18,6 +19,7 @@ function App () {
             <Route path="/login" element={user ? <Navigate replace to="/" /> : <Login />} />
             <Route path="/register" element=  {user ? <Navigate replace to="/" /> : <Register />} />
             <Route path="/profile/:username" element={ <Profile/>} />
+            <Route path="/update/profile" element={ <UpdateProfile/>} />
           </Routes>
       </div>
     );
