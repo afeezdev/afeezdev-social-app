@@ -3,32 +3,31 @@ import "./updateProfile.scss";
 import { useNavigate } from "react-router-dom"
 import Topbar from "../../components/topbar/Topbar";
 import { AuthContext } from "../../context/AuthContext";
+import axios from "axios";
 
 export default function UpdateProfile() {
   const { user: currentUser } = useContext(AuthContext)
+  const desc = useRef();
   const city = useRef();
   const from = useRef();
   const relationship = useRef();
   const navigate = useNavigate();
 
-  // const handleClick = async (e) => {
-  //   e.preventDefault();
-  //   if (passwordAgain.current.value !== password.current.value) {
-  //     passwordAgain.current.setCustomValidity("Passwords don't match!");
-  //   } else {
-  //     const user = {
-  //       username: username.current.value,
-  //       email: email.current.value,
-  //       password: password.current.value,
-  //     };
-  //     try {
-  //       await axios.post("/auth/register", user);
-  //       navigate("/login");
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   }
-  // };
+  const handleProfile = async (e) => {
+    e.preventDefault();
+    const updatedProfile = {
+      userId: currentUser._id,
+      desc: desc.current.value ? desc.current.value : undefined,
+      from: from.current.value ? from.current.value : undefined,
+      city: city.current.value ? city.current.value : undefined,
+      relationship: Number(relationship.current.value)
+    };
+    try {
+        await axios.put(`/users/profile/${currentUser._id}`, updatedProfile);
+        alert("Your Profile has been updated")  
+        console.log(updatedProfile)
+    } catch (err) {}
+  };
 
   return (
     <>
@@ -43,6 +42,11 @@ export default function UpdateProfile() {
           </div>
           <div className="loginRight">
             <form className="loginBox">
+            <input
+                placeholder="your description"
+                ref={desc}
+                className="loginInput"
+              />
               <input
                 placeholder="current city"
                 ref={city}
@@ -55,11 +59,12 @@ export default function UpdateProfile() {
                 className="loginInput"
               />
               <select name="status" id="status" className="loginInput" ref={relationship}>
-                <option value="volvo">Single</option>
-                <option value="saab">Married</option>
-                <option value="opel">Divorced</option>
+                <option value="0">Marital Status?</option>
+                <option value="1">Single</option>
+                <option value="2">Married</option>
+                <option value="3">Divorced</option>
               </select>
-              <button className="loginButton" type="submit">
+              <button className="loginButton" type="submit" onClick={handleProfile}>
                 Update
               </button>
             </form>

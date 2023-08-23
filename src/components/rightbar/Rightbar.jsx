@@ -97,7 +97,10 @@ export default function Rightbar({ user }) {
                 ? "Single"
                 : user.relationship === 2
                 ? "Married"
-                : "Divorced"}
+                : user.relationship ===3
+                ?"Divorced"
+                : undefined
+                }
             </span>
           </div>
         </div>

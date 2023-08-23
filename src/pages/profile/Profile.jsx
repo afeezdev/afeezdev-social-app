@@ -28,7 +28,7 @@ export default function Profile({ }) {
 
   const uploadHandler = async (e) => {
     e.preventDefault();
-    const updatedProfile = {
+    const updatedProfilePicture = {
       userId: user._id,
     };
     if (file) {
@@ -36,14 +36,13 @@ export default function Profile({ }) {
       const fileName = file.name.replace(file.name, "profilePicture.JPG");
       data.set("name", fileName);
       data.set("file", file);
-      updatedProfile.profilePicture = fileName;
-      console.log(updatedProfile);
+      updatedProfilePicture.profilePicture = fileName;
       try { 
         await axios.post("/upload", data);
       } catch (err) {}
     }
     try {
-        await axios.put(`/users/${user._id}`, updatedProfile);
+        await axios.put(`/users/picture/${user._id}`, updatedProfilePicture);
         window.location.reload();            
     } catch (err) {}
   };
