@@ -25,6 +25,7 @@ export default function UpdateProfile() {
     try {
         await axios.put(`/users/profile/${currentUser._id}`, updatedProfile);
         alert("Your Profile has been updated")  
+        window.location.href = `/profile/${currentUser.username}`
         console.log(updatedProfile)
     } catch (err) {}
   };
