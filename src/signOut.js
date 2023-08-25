@@ -4,3 +4,4 @@ export const signOut = (e) => {
   window.location.reload()
   window.location.href = "/login"
 };
+

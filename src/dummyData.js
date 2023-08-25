@@ -4,11 +4,11 @@ export const Users = [
     profilePicture: "person/1.jpeg",
     username: "Safak Kocaoglu",
   },
-  {
-    id:2,
-    profilePicture: "person/2.jpeg",
-    username: "Janell Shrum",
-  },
+  // {
+  //   id:2,
+  //   profilePicture: "person/2.jpeg",
+  //   username: "Janell Shrum",
+  // },
   {
     id:3,
     profilePicture: "person/3.jpeg",

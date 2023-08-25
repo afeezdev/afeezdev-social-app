@@ -8,6 +8,10 @@
   top: 0;
   z-index: 999;
 
+  @media only screen and (max-width: 390px) {
+    width: 110%;
+  }
+
   .topbarLeft {
     flex: 3;
 
@@ -111,6 +115,49 @@
 .topbarLink {
   font-size: 14px;
   cursor: pointer;
+}
+
+.hamburger{
+  color: white;
+  display: none;
+
+  @media only screen and (max-width: 900px) {
+    display: block;
+  }
+
+}
+
+.hamburgerList {
+  position: fixed;
+  width: 150px;
+  top: 50px;
+  padding-top: 10px;
+  height: 170px;
+  background-color: #1877f2;
+  list-style: none;
+  display: none;
+
+
+  @media only screen and (max-width: 900px) {
+    display: block;
+    z-index: 3;
+  }
+
+  .hamburgerListItem {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    color: white;
+    list-style: none;
+  }
+}
+
+.hamburgerClose{
+  display: none;
+}
+
+.hamburgerListLink{
+  text-decoration: none;
 }
 
 

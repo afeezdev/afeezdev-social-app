@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./closeFriend.css";
 
 export default function CloseFriend({user}) {
@@ -5,10 +6,12 @@ export default function CloseFriend({user}) {
 
   return (
     <li className="sidebarFriend">
-      <img className="sidebarFriendImg" src={user.profilePicture
-                    ? PF + user.profilePicture
-                    : PF + "person/noAvatar.png"} alt="" />
-      <span className="sidebarFriendName">{user.username}</span>
+      <Link to={"/profile/" + user.username}  style={{textDecoration: "none", color: "black" }}>
+        <img className="sidebarFriendImg" src={user.profilePicture
+                      ? PF + user.profilePicture
+                      : PF + "person/noAvatar.png"} alt="" />
+        <span className="sidebarFriendName">{user.username}</span>
+      </Link>
     </li>
   );
 }

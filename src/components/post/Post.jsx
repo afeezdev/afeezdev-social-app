@@ -3,7 +3,7 @@ import { MoreVert } from "@material-ui/icons";
 import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom"
-import * as moment from "moment"
+import { format } from "timeago.js";
 import { AuthContext } from "../../context/AuthContext";
 
 
@@ -53,9 +53,7 @@ export default function Post({ post }) {
             <span className="postUsername">
               {user.username}
             </span>
-            <span className="postDate" >
-            {moment(post.createdAt).format("YYYY/MM/DD")}
-            </span>
+            <span className="postDate">{format(post.createdAt)}</span>
           </div>
           <div className="postTopRight">
             <MoreVert />

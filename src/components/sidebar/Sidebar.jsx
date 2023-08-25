@@ -33,7 +33,7 @@ export default function Sidebar() {
       }
     };
     getFriends();
-  }, [currentUser._id]);
+  }, [currentUser._id, myFriends]);
 
     return (
     <div className="sidebar">
