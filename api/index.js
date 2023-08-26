@@ -54,13 +54,14 @@ app.post("/api/upload", upload.single("file"), (req, res) => {
 
 
 //api routes
-app.use("/api/users", userRoute)
-app.use("/api/auth", authRoute)
-app.use("/api/posts", postRoute);
 app.get("/", (req, res) => {
   res.setHeader("Access-Control-Allow-Credentials", "true");
   res.send("API is running")
 })
+app.use("/api/users", userRoute)
+app.use("/api/auth", authRoute)
+app.use("/api/posts", postRoute);
+
 
 
 

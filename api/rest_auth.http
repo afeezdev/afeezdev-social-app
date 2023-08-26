@@ -1,4 +1,7 @@
 
+GET https://afeezdev-social.onrender.com
+
+###
 POST https://afeezdev-social.onrender.com/auth/register
 Content-Type: application/json
 
