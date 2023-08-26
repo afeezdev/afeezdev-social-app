@@ -1,5 +1,5 @@
 
-POST http://localhost:8800/api/auth/register
+POST https://afeezdev-social.onrender.com/register
 Content-Type: application/json
 
 {   
