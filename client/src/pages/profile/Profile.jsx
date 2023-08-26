@@ -7,15 +7,15 @@ import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { useParams } from "react-router";
 import { AuthContext } from "../../context/AuthContext";
-import { Cancel, Add, PermMedia } from "@material-ui/icons";
+import { Cancel, Add } from "@material-ui/icons";
 
 
-export default function Profile({ }) {
+export default function Profile() {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const [user, setUser] = useState({});
   const username = useParams().username;
   const [file, setFile] = useState(null);
-  const { user: currentUser, dispatch } = useContext(AuthContext);
+  const { user: currentUser} = useContext(AuthContext);
 
 
   useEffect(() => {
@@ -83,7 +83,7 @@ export default function Profile({ }) {
                     <Cancel className="profileCancelImg" onClick={() => setFile(null)} />
                   </div>
                 )}
-              {user.username == currentUser.username && (    
+              {user.username === currentUser.username && (    
                 <>
                  <label htmlFor="profilefile" className="profileOption">
                       <span className="profileOptionText"> 
