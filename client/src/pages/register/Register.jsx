@@ -73,7 +73,9 @@ export default function Register() {
             </button>
             <button className="loginRegisterButton">
               <Link to="/login" style={{ textDecoration: "none" }}>
+               <span className="loginRegisterButton">
                 Log into Account
+              </span> 
               </Link>
           </button>
           </form>

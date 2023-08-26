@@ -80,7 +80,7 @@ export default function Rightbar({ user }) {
           </button>
         )}
         
-        <h4 className="rightbarTitle">User information</h4>
+        <h4 className="rightbarTitle">{`${user.username}'s information`}</h4>
         <div className="rightbarInfo">
           <div className="rightbarInfoItem">
             <span className="rightbarInfoKey">City:</span>
@@ -104,7 +104,7 @@ export default function Rightbar({ user }) {
             </span>
           </div>
         </div>
-        <h4 className="rightbarTitle">User friends</h4>
+        <h4 className="rightbarTitle">{`${user.username}'s friends`}</h4>
         <div className="rightbarFollowings" >
           {friends.map((friend) => (
             <Link

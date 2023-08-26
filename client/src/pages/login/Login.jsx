@@ -53,7 +53,7 @@ export default function Login() {
             </button>
             <span className="loginForgot">Forgot Password?</span>
           <button className="loginRegisterButton">
-              <Link to="/register" style={{ textDecoration: "none", }}>
+              <Link to="/register" style={{ textDecoration: "none" }}>
                <span className="loginRegisterButton">
                Create a New Account
               </span> 

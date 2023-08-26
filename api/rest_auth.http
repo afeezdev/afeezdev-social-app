@@ -2,7 +2,7 @@
 GET https://afeezdev-social.onrender.com
 
 ###
-POST https://afeezdev-social.onrender.com/auth/register
+POST https://afeezdev-social.onrender.com/api/auth/register
 Content-Type: application/json
 
 {   
