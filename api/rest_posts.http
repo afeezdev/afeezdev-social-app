@@ -1,0 +1,47 @@
+
+POST http://localhost:8800/api/posts
+Content-Type: application/json
+
+{   
+    "userId": "64d27e4babaf502b10058c1d",
+    "desc": "this is another post from me",
+    "img": "5.jpg"
+}
+
+###
+PUT http://localhost:8800/api/posts/619d1d4fb205d80e4032a840
+Content-Type: application/json
+
+{   
+    "userId": "619d16d886392121187baf91",
+    "desc": "new post updated"
+}
+
+###
+
+DELETE http://localhost:8800/api/posts/64d134018949d22b287c5b65
+Content-Type: application/json
+
+{   
+    "userId": "64d11eb731f5cc075ceac5a9",
+}
+
+###
+
+PUT http://localhost:8800/api/posts/619d1d4fb205d80e4032a840/like
+Content-Type: application/json
+
+{   
+    "userId": "619d16d886392121187baf91"
+}
+
+###
+
+GET http://localhost:8800/api/posts/619d1d4fb205d80e4032a840
+
+###
+
+GET http://localhost:8800/api/posts/timeline/64d11eb731f5cc075ceac5a9
+
+
+

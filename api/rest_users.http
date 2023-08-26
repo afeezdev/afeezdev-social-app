@@ -1,0 +1,56 @@
+
+PUT http://localhost:8800/api/users/619d046a86392121187baf80
+Content-Type: application/json
+
+{   
+    "userId": "619d046a86392121187baf80",
+    "username": "afeez",
+    "email": "afeez@gmail.com",
+    "password": "123456",
+    "desc": "it is my first description"
+}
+
+###
+DELETE http://localhost:8800/api/users/619d14d886392121187baf89
+Content-Type: application/json
+
+{   
+    "userId": "619d14d886392121187baf89"
+}
+
+###
+
+GET http://localhost:8800/api/users/619d046a86392121187baf80
+
+###
+
+
+GET http://localhost:8800/api/users?username=afeez1
+
+###
+
+
+GET http://localhost:8800/api/users/friends/619d046a86392121187baf80
+Content-Type: application/json
+
+###
+
+PUT http://localhost:8800/api/users/64d11eb731f5cc075ceac5a9/follow
+Content-Type: application/json
+
+{   
+    "userId": "64d27e4babaf502b10058c1d"
+}
+
+###
+
+PUT http://localhost:8800/api/users/64d11eb731f5cc075ceac5a9/unfollow
+Content-Type: application/json
+
+{   
+    "userId": "64d27e4babaf502b10058c1d"
+}
+
+
+
+

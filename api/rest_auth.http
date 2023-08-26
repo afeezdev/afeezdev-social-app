@@ -1,0 +1,19 @@
+
+POST http://localhost:8800/api/auth/register
+Content-Type: application/json
+
+{   
+    "username": "jane",
+    "email": "jane@gmail.com",
+    "password": "123456"
+}
+
+###
+
+POST http://localhost:8800/api/auth/login
+Content-Type: application/json
+
+{   
+    "email": "afeez5@gmail.com",
+    "password": "123456"
+}
