@@ -21,7 +21,7 @@ export default function Register() {
         password: password.current.value,
       };
       try {
-        await axios.post("/auth/register", user);
+        await axios.post("https://afeezdev-social.onrender.com/api/auth/register", user);
         navigate("/login");
       } catch (err) {
         console.log(err);

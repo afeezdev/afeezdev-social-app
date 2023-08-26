@@ -31,14 +31,14 @@ export default function Share() {
       newPost.img = fileName;
       console.log(newPost.profilePicture);
       try { 
-        await axios.post("/upload", data);
+        await axios.post("https://afeezdev-social.onrender.com/api/upload", data);
       } catch (err) {}
     }
     try {
       if(!newPost.desc && !newPost.img) {
         alert("Ooops, empty post isn't allowed !!!")
       }else {
-        await axios.post("/posts", newPost);
+        await axios.post("https://afeezdev-social.onrender.com/api/posts", newPost);
         window.location.reload();
       }
       

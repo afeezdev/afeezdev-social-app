@@ -23,7 +23,7 @@ export default function UpdateProfile() {
       relationship: Number(relationship.current.value)
     };
     try {
-        await axios.put(`/users/profile/${currentUser._id}`, updatedProfile);
+        await axios.put(`https://afeezdev-social.onrender.com/api/users/profile/${currentUser._id}`, updatedProfile);
         alert("Your Profile has been updated")  
         window.location.href = `/profile/${currentUser.username}`
         console.log(updatedProfile)

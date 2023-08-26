@@ -20,7 +20,7 @@ export default function Profile({ }) {
 
   useEffect(() => {
     const fetchUser = async () => {
-      const res = await axios.get(`/users?username=${username}`);
+      const res = await axios.get(`https://afeezdev-social.onrender.com/api/users?username=${username}`);
       setUser(res.data);
     };
     fetchUser();
@@ -38,11 +38,11 @@ export default function Profile({ }) {
       data.set("file", file);
       updatedProfilePicture.profilePicture = fileName;
       try { 
-        await axios.post("/upload", data);
+        await axios.post("https://afeezdev-social.onrender.com/api/upload", data);
       } catch (err) {}
     }
     try {
-        await axios.put(`/users/picture/${user._id}`, updatedProfilePicture);
+        await axios.put(`https://afeezdev-social.onrender.com/api/users/picture/${user._id}`, updatedProfilePicture);
         window.location.reload();            
     } catch (err) {}
   };

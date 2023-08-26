@@ -26,7 +26,7 @@ export default function Sidebar() {
   useEffect(() => {
     const getFriends = async () => {
       try {
-        const friendList = await axios.get("/users/friends/" + currentUser._id);
+        const friendList = await axios.get("https://afeezdev-social.onrender.com/api/users/friends/" + currentUser._id);
         setMyFriends(friendList.data);
       } catch (err) {
         console.log(err);
