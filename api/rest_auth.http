@@ -1,5 +1,5 @@
 
-POST https://afeezdev-social.onrender.com/register
+POST https://afeezdev-social.onrender.com/auth/register
 Content-Type: application/json
 
 {   

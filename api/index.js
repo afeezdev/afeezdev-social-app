@@ -12,9 +12,7 @@ const multer  = require('multer')
 const path = require("path");
 
 
-app.use(cors({
-  origin: '*'
-}))
+app.use(cors())
 dotenv.config();
 
 mongoose.connect(process.env.MONGO_URL, 
@@ -59,6 +57,10 @@ app.post("/api/upload", upload.single("file"), (req, res) => {
 app.use("/api/users", userRoute)
 app.use("/api/auth", authRoute)
 app.use("/api/posts", postRoute);
+app.get("/", (req, res) => {
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  res.send("API is running")
+})
 
 
 
