@@ -48,7 +48,7 @@ export default function Profile() {
   };
   return (
     <>
-      <Topbar currentUser={currentUser} />
+      <Topbar />
       <div className="profile">
         <Sidebar />
         <div className="profileRight">
