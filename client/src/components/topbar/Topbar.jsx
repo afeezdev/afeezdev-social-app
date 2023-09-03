@@ -7,7 +7,7 @@ import { signOut } from "../../signOut";
 import Hamburger from 'hamburger-react';
 
 export default function Topbar() {
-  const { user } = useContext(AuthContext);
+  const { user: currentUser } = useContext(AuthContext);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const [isOpen, setOpen] = useState(false)
   let menuOpen = "hamburgerClose"
@@ -53,11 +53,11 @@ export default function Topbar() {
               <span className="topbarIconBadge">1</span>
             </div>
           </div>
-          <Link to={`/profile/${user.username}`}>
+          <Link to={`/profile/${currentUser.username}`}>
             <img
               src={
-                user.profilePicture
-                  ? PF + user.profilePicture
+                currentUser.profilePicture
+                  ? PF + currentUser.profilePicture
                   : PF + "person/noAvatar.png"
               }
               alt=""
@@ -75,7 +75,7 @@ export default function Topbar() {
             <span className="hamburgerListItemText">Home Page</span>
           </li>
         </Link>
-        <Link to={`/profile/${user.username}`} className="hamburgerListLink">
+        <Link to={`/profile/${currentUser.username}`} className="hamburgerListLink">
           <li className="hamburgerListItem"> 
             <span className="hamburgerListItemText">My Profile</span>
           </li>
