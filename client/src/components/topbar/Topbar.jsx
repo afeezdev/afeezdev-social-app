@@ -1,16 +1,25 @@
 import "./topbar.scss";
 import { Search, Person, Chat, Notifications } from "@material-ui/icons";
 import { Link} from "react-router-dom";
-import { useContext, useState} from "react";
-import { AuthContext } from "../../context/AuthContext";
+import { useState, useEffect} from "react";
 import { signOut } from "../../signOut";
 import Hamburger from 'hamburger-react';
+import axios from "axios";
 
-export default function Topbar() {
-  const { user: currentUser } = useContext(AuthContext);
+
+export default function Topbar({currentUser}) {
+  const [user, setUser] = useState({});
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const [isOpen, setOpen] = useState(false)
   let menuOpen = "hamburgerClose"
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const res = await axios.get(`https://afeezdev-social.onrender.com/api/users?username=${currentUser.username}`);
+      setUser(res.data);
+    };
+    fetchUser();
+  }, [currentUser.profilePicture]);
 
   if(isOpen){
     menuOpen = "hamburgerList"
@@ -53,11 +62,11 @@ export default function Topbar() {
               <span className="topbarIconBadge">1</span>
             </div>
           </div>
-          <Link to={`/profile/${currentUser.username}`}>
+          <Link to={`/profile/${user.username}`}>
             <img
               src={
-                currentUser.profilePicture
-                  ? PF + currentUser.profilePicture
+                user.profilePicture
+                  ? PF + user.profilePicture
                   : PF + "person/noAvatar.png"
               }
               alt=""
@@ -75,7 +84,7 @@ export default function Topbar() {
             <span className="hamburgerListItemText">Home Page</span>
           </li>
         </Link>
-        <Link to={`/profile/${currentUser.username}`} className="hamburgerListLink">
+        <Link to={`/profile/${user.username}`} className="hamburgerListLink">
           <li className="hamburgerListItem"> 
             <span className="hamburgerListItemText">My Profile</span>
           </li>
