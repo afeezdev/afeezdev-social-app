@@ -10,6 +10,7 @@ import { Add, Remove } from "@material-ui/icons";
 export default function Rightbar({ user }) {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER
   const [friends, setFriends] = useState([]);
+  const [users, setUsers] = useState([]);
   const { user: currentUser, dispatch } = useContext(AuthContext);
   const [followed, setFollowed] = useState(
     currentUser.followings.includes(user?.id)
@@ -30,6 +31,23 @@ export default function Rightbar({ user }) {
     };
     getFriends();
   }, [user, currentUser]);
+
+   useEffect(() => {
+    let otherUsers = [];
+    const getAllUsers = async () => {
+      try {
+        const allUsers = await axios.get("https://afeezdev-social.onrender.com/api/users/allUsers");
+        for (let i = 0; i < allUsers.data.length; i++) {
+          if(currentUser._id !== allUsers.data[i]._id) {
+            otherUsers.push(allUsers.data[i])
+          } 
+        }
+        setUsers(otherUsers);
+      } catch (err) { 
+      }
+    };
+    getAllUsers();
+  }, [users._id]);
 
   const handleClick = async () => {
     try {
@@ -62,7 +80,7 @@ export default function Rightbar({ user }) {
       <img className="rightbarAd" src="assets/ad.png" alt="" />
       <h4 className="rightbarTitle">Suggested Friends</h4>
       <ul className="rightbarFriendList">
-        {Users.map((u) => (
+        {users.map((u) => (
           <Online key={u.id} user={u}  />
         ))}
       </ul>
