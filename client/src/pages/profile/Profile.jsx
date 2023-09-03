@@ -33,7 +33,7 @@ export default function Profile() {
     };
     if (file) {
       const data = new FormData();
-      const fileName = Date.now() + file.name;
+      const fileName = file.name.replace(file.name, "profilePicture.JPG");
       data.set("name", fileName);
       data.set("file", file);
       updatedProfilePicture.profilePicture = fileName;
@@ -48,7 +48,7 @@ export default function Profile() {
   };
   return (
     <>
-      <Topbar />
+      <Topbar currentUser={currentUser} />
       <div className="profile">
         <Sidebar />
         <div className="profileRight">
