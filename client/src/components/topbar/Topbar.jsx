@@ -1,16 +1,19 @@
 import "./topbar.scss";
 import { Search, Person, Chat, Notifications } from "@material-ui/icons";
 import { Link} from "react-router-dom";
-import { useState, useEffect} from "react";
+import { useState, useEffect,useContext} from "react";
 import { signOut } from "../../signOut";
 import Hamburger from 'hamburger-react';
 import axios from "axios";
+import { AuthContext } from "../../context/AuthContext";
 
 
-export default function Topbar({currentUser}) {
+
+export default function Topbar() {
   const [user, setUser] = useState({});
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const [isOpen, setOpen] = useState(false)
+  const { user: currentUser} = useContext(AuthContext);
   let menuOpen = "hamburgerClose"
 
   useEffect(() => {
@@ -19,7 +22,7 @@ export default function Topbar({currentUser}) {
       setUser(res.data);
     };
     fetchUser();
-  }, [currentUser.profilePicture]);
+  }, [currentUser]);
 
   if(isOpen){
     menuOpen = "hamburgerList"
