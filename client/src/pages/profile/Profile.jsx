@@ -33,7 +33,7 @@ export default function Profile() {
     };
     if (file) {
       const data = new FormData();
-      const fileName = file.name.replace(file.name, "profilePicture.JPG");
+      const fileName = Date.now() + file.name;
       data.set("name", fileName);
       data.set("file", file);
       updatedProfilePicture.profilePicture = fileName;
