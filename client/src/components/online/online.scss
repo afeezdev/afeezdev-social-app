@@ -8,10 +8,6 @@
 
     .rightbarProfileImgContainer {
       position: relative;
-
-      @media only screen and (max-width: 900px) {
-        
-      }
   
       .rightbarProfileImg {
         width: 100px;
@@ -35,7 +31,7 @@
           right: 0;
           border: 2px solid white;
 
-          @media only screen and (max-width: 900px) {
+          @media only screen and (max-width: 700px) {
             display: none;
           }
       }
@@ -45,7 +41,7 @@
       font-weight: 500;
       color: black;
 
-      @media only screen and (max-width: 900px) {
+      @media only screen and (max-width: 700px) {
         font-size: 14px;
       }
   }

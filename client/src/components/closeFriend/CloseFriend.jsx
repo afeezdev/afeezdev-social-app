@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import "./closeFriend.css";
+import "./closeFriend.scss";
 
 export default function CloseFriend({user}) {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER
